@@ -7,8 +7,8 @@
  */
 
 import React from 'react';
-import { Helmet } from 'react-helmet';
-import { Switch, Route } from 'react-router-dom';
+import {Helmet} from 'react-helmet';
+import {Route, Switch} from 'react-router-dom';
 
 import HomePage from 'containers/HomePage/Loadable';
 import FeaturePage from 'containers/FeaturePage/Loadable';
@@ -16,6 +16,9 @@ import NotFoundPage from 'containers/NotFoundPage/Loadable';
 import Header from 'components/Header';
 import Footer from 'components/Footer';
 import './style.scss';
+import SignIn from 'containers/Auth/SignIn';
+import SignUp from 'containers/Auth/SignUp';
+import { NotificationContainer } from 'react-notifications';
 
 const App = () => (
   <div className="app-wrapper">
@@ -23,15 +26,18 @@ const App = () => (
       titleTemplate="Share post"
       defaultTitle="Share post"
     >
-      <meta name="description" content="Simple Blog sharing protal" />
+      <meta name="description" content="Simple Blog sharing protal"/>
     </Helmet>
-    <Header />
+    <Header/>
     <Switch>
-      <Route exact path="/" component={HomePage} />
-      <Route path="/features" component={FeaturePage} />
-      <Route path="" component={NotFoundPage} />
+      <Route exact path="/" component={HomePage}/>
+      <Route path="/auth/sign-in" component={SignIn}/>
+      <Route path="/auth/sign-up" component={SignUp}/>
+      <Route path="/features" component={FeaturePage}/>
+      <Route path="" component={NotFoundPage}/>
     </Switch>
-    <Footer />
+    <Footer/>
+    <NotificationContainer/>
   </div>
 );
 

@@ -34,6 +34,8 @@ export default class HomePage extends React.PureComponent { // eslint-disable-li
       error,
       repos
     };
+        console.log(onSubmitForm, 'asdf')
+
     const postsListProps = {
       loading,
       posts,

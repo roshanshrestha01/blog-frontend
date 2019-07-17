@@ -1,4 +1,4 @@
-import { fromJS } from 'immutable';
+import {fromJS} from 'immutable';
 
 import {combineReducers} from 'redux';
 import {connectRouter, LOCATION_CHANGE} from 'connected-react-router';
@@ -6,6 +6,7 @@ import {connectRouter, LOCATION_CHANGE} from 'connected-react-router';
 import history from 'utils/history';
 import globalReducer from 'containers/App/reducer';
 // import {LOCATION_CHANGE} from 'react-router-redux';
+import authReducer from './containers/Auth/reducer';
 
 const routeInitialState = fromJS({
   location: null,
@@ -26,6 +27,7 @@ function routeReducer(state = routeInitialState, action) {
 export default function createReducer(injectedReducers = {}) {
   const rootReducer = combineReducers({
     route: routeReducer,
+    auth: authReducer,
     global: globalReducer,
     router: connectRouter(history),
     ...injectedReducers,
