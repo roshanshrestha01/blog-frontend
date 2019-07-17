@@ -1,6 +1,7 @@
-import { fromJS } from 'immutable';
+import {fromJS} from 'immutable';
+import {NotificationManager} from 'react-notifications';
 
-import { END_SIGN_UP, SIGN_IN, SIGN_UP, SUCCESS_SIGN_IN, SUCCESS_SIGN_OUT } from './constants';
+import {END_SIGN_UP, REQUEST_FAILED, SIGN_IN, SIGN_UP, SUCCESS_SIGN_IN, SUCCESS_SIGN_OUT} from './constants';
 // The initial state of the App
 const initialState = fromJS({
   authLoading: false,
@@ -30,6 +31,10 @@ function authReducer(state = initialState, action) {
           token: null,
           isLoggedIn: false,
         });
+    case REQUEST_FAILED:
+      const {error: {message}} = action
+      NotificationManager.error(message);
+      return state
     case SIGN_UP:
       return state.set('authLoading', true);
     case END_SIGN_UP:

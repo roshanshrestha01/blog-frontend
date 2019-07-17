@@ -4,3 +4,4 @@ export const SUCCESS_SIGN_OUT = 'Auth/SUCCESS_SIGN_OUT';
 
 export const SIGN_UP = 'Auth/SIGN_UP';
 export const END_SIGN_UP = 'Auth/END_SIGN_UP';
+export const REQUEST_FAILED = 'Auth/REQUEST_FAILED';

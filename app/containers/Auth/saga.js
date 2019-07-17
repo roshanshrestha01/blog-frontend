@@ -2,7 +2,7 @@ import {call, put, takeLatest,} from 'redux-saga/effects';
 import request from 'utils/request';
 import {push} from 'connected-react-router';
 
-import {SIGN_IN, SIGN_UP, SUCCESS_SIGN_OUT} from './constants';
+import {REQUEST_FAILED, SIGN_IN, SIGN_UP, SUCCESS_SIGN_OUT} from './constants';
 import {endSignUp, successSignIn} from './actions';
 import config from '../../config';
 import {NotificationManager} from 'react-notifications';
@@ -22,9 +22,14 @@ export function* userSignIn(action) {
     });
     yield put(successSignIn(response));
     yield put(push('/'));
-    return response;
   } catch (err) {
-    NotificationManager.error('Invalid Credentials. Please try again');
+    let error;
+    try {
+      error = yield err.response.json();
+    } catch (e) {
+      error = {errors: [{detail: `${err.name}: ${err.message}`}]};
+    }
+    yield put({type: REQUEST_FAILED, error})
   }
 }
 
@@ -32,7 +37,7 @@ export function* userSignUp(action) {
   const requestURL = `${config.baseURL}/users/`;
   const {data} = action;
   try {
-    const auth = yield call(request, requestURL, {
+    const response = yield call(request, requestURL, {
       method: 'POST',
       headers: {
         Accept: 'application/json',
@@ -40,20 +45,17 @@ export function* userSignUp(action) {
       },
       body: JSON.stringify(data),
     });
-    NotificationManager.success('Please verify email address.');
+    NotificationManager.success('Successfull created. Please login.');
     yield put(endSignUp());
     yield put(push('/auth/sign-in'));
   } catch (err) {
-    const {error} = err;
-    if (error.hasOwnProperty('errors')) {
-      NotificationManager.error(error.non_field_errors);
+    let error;
+    try {
+      error = yield err.response.json();
+    } catch (e) {
+      error = {errors: [{detail: `${err.name}: ${err.message}`}]};
     }
-    if (error.hasOwnProperty('password1')) {
-      NotificationManager.error(error.password1);
-    }
-    if (error.hasOwnProperty('email')) {
-      NotificationManager.error(error.email);
-    }
+    yield put({type: REQUEST_FAILED, error})
     yield put(endSignUp());
   }
 }

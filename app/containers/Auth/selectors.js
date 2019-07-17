@@ -9,7 +9,7 @@ const makeSelectUsername = () => createSelector(
 
 const makeSelectToken = () => createSelector(
   selectAuth,
-  (authState) => authState.user.token
+  (authState) => authState.user.auth_token
 );
 
 const makeSelectGoingEvents = () => createSelector(
@@ -48,6 +48,7 @@ const makeSelectAuthLoading = () => createSelector(
 export {
   selectAuth,
   makeSelectGoingEvents,
+  makeSelectToken,
   makeSelectAuthLoading,
   makeSelectUserLoggedIn,
 };
