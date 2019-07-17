@@ -15,7 +15,8 @@ export default class HomePage extends React.PureComponent { // eslint-disable-li
    * when initial state username is not null, submit the form to load repos
    */
   componentDidMount() {
-    const { username, onSubmitForm } = this.props;
+    const { username, onSubmitForm, fetchPosts } = this.props;
+    fetchPosts();
     if (username && username.trim().length > 0) {
       onSubmitForm();
     }
@@ -23,7 +24,7 @@ export default class HomePage extends React.PureComponent { // eslint-disable-li
 
   render() {
     const {
-      loading, error, repos, username, onChangeUsername, onSubmitForm
+      loading, error, repos, username, onChangeUsername, onSubmitForm, posts
     } = this.props;
     const reposListProps = {
       loading,
