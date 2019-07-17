@@ -17,8 +17,8 @@ const List = ({ component, items }) => {
   }
 
   return (
-    <div className="list-wrapper">
-      <ul>
+    <div>
+      <ul className="collection">
         {content}
       </ul>
     </div>
