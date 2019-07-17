@@ -19,6 +19,7 @@ import './style.scss';
 import SignIn from 'containers/Auth/SignIn';
 import SignUp from 'containers/Auth/SignUp';
 import { NotificationContainer } from 'react-notifications';
+import PostForm from "../Post/PostForm";
 
 const App = () => (
   <div className="app-wrapper">
@@ -34,6 +35,8 @@ const App = () => (
       <Route path="/auth/sign-in" component={SignIn}/>
       <Route path="/auth/sign-up" component={SignUp}/>
       <Route path="/features" component={FeaturePage}/>
+      <Route path="/post/create" component={PostForm}/>
+      <Route path="/post/:id" component={PostForm}/>
       <Route path="" component={NotFoundPage}/>
     </Switch>
     <Footer/>
