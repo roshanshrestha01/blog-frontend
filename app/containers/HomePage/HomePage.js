@@ -35,15 +35,9 @@ export default class HomePage extends React.PureComponent { // eslint-disable-li
       <article>
         <Helmet>
           <title>Home Page</title>
-          <meta name="description" content="A React.js Boilerplate application homepage" />
+          <meta name="description" content="Simple post sharing portal." />
         </Helmet>
         <div className="home-page">
-          <section className="centered">
-            <h2>Start your next react project in seconds</h2>
-            <p>
-              A minimal <i>React-Redux</i> boilerplate with all the best practices
-            </p>
-          </section>
           <section>
             <h2>Try me!</h2>
             <form onSubmit={onSubmitForm}>
