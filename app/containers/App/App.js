@@ -21,6 +21,7 @@ import { NotificationContainer } from 'react-notifications';
 import PostForm from '../Post/PostForm';
 import SignOutProtectRoute from './SignOutProtectRoute';
 import SignInProtectRoute from './SignInProtectRoute';
+import PostDetail from '../../components/PostDetail';
 
 const App = () => (
   <div className="app-wrapper">
@@ -33,6 +34,7 @@ const App = () => (
     <Header />
     <Switch>
       <Route exact path="/" component={HomePage} />
+      <Route path="/post/detail/:slug" component={PostDetail} />
       <SignOutProtectRoute path="/auth/sign-in" component={SignIn} />
       <SignOutProtectRoute path="/auth/sign-up" component={SignUp} />
       <SignInProtectRoute path="/post/create" component={PostForm} />

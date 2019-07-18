@@ -7,7 +7,7 @@ class Header extends React.Component { // eslint-disable-line react/prefer-state
     return (
       <div className="header">
         <div className="nav-bar">
-          <NavBar/>
+          <NavBar />
         </div>
       </div>
     );

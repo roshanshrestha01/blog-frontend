@@ -12,7 +12,7 @@ export default class PostListItem extends React.PureComponent { // eslint-disabl
       <div className="collection-item row">
         <div className="col m9">
           <h2 className="post-list-title">
-            <Link className="router-link" to={`/event/detail/${item.id}`}>
+            <Link className="router-link" to={`/post/detail/${item.slug}`}>
               {item.title}
             </Link>
           </h2>
@@ -23,7 +23,7 @@ export default class PostListItem extends React.PureComponent { // eslint-disabl
     );
 
     return (
-      <ListItem class="collection-item" key={`repo-list-item-${item.id}`} item={content} />
+      <ListItem class="collection-item" key={`post-list-item-${item.id}`} item={content} />
     );
   }
 }

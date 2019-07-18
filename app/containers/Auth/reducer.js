@@ -36,7 +36,7 @@ function authReducer(state = initialState, action) {
         });
     }
     case REQUEST_FAILED: {
-      const {error: {message}} = action;
+      const { error: { message } } = action;
       NotificationManager.error(message);
       return state;
     }
