@@ -5,6 +5,7 @@ import './style.scss';
 import request from 'utils/request';
 import config from '../../config';
 import LoadingIndicator from '../LoadingIndicator';
+import Comment from './_partials/Comment';
 
 
 class PostDetail extends React.Component { // eslint-disable-line react/prefer-stateless-function
@@ -14,7 +15,7 @@ class PostDetail extends React.Component { // eslint-disable-line react/prefer-s
   }
 
   async componentDidMount() {
-    const { match: { params: { slug } }, isLoggedIn } = this.props;
+    const { match: { params: { slug } } } = this.props;
     const requestURL = `${config.baseURL}/posts/${slug}/`;
     await request(requestURL)
       .then((data) => {
@@ -28,11 +29,13 @@ class PostDetail extends React.Component { // eslint-disable-line react/prefer-s
   }
 
   renderEventDetail() {
+    const { isLoggedIn } = this.props;
     const {
       title,
       link,
       source,
-      messages
+      slug,
+      comment
     } = this.state;
     return (
       <div>
@@ -41,7 +44,7 @@ class PostDetail extends React.Component { // eslint-disable-line react/prefer-s
           <p className="post-sub-info">{source}</p>
           <p className="flow-text">{link}</p>
         </div>
-        {messages}
+        <Comment isLoggedIn={isLoggedIn} comments={comment} postSlug={slug} />
       </div>
     );
   }

@@ -66,7 +66,6 @@ export default class HomePage extends React.PureComponent { // eslint-disable-li
               />
             </form>
             <PostsList {...postsListProps} />
-            {posts.length === 0 && <p>No posts found.</p>}
           </section>
         </div>
       </article>
