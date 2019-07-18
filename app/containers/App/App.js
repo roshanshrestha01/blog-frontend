@@ -20,6 +20,8 @@ import SignIn from 'containers/Auth/SignIn';
 import SignUp from 'containers/Auth/SignUp';
 import { NotificationContainer } from 'react-notifications';
 import PostForm from "../Post/PostForm";
+import SignOutProtectRoute from "./SignOutProtectRoute";
+import SignInProtectRoute from "./SignInProtectRoute";
 
 const App = () => (
   <div className="app-wrapper">
@@ -32,11 +34,11 @@ const App = () => (
     <Header/>
     <Switch>
       <Route exact path="/" component={HomePage}/>
-      <Route path="/auth/sign-in" component={SignIn}/>
-      <Route path="/auth/sign-up" component={SignUp}/>
+      <SignOutProtectRoute path="/auth/sign-in" component={SignIn}/>
+      <SignOutProtectRoute path="/auth/sign-up" component={SignUp}/>
+      <SignInProtectRoute path="/post/create" component={PostForm}/>
+      <SignInProtectRoute path="/post/:id" component={PostForm}/>
       <Route path="/features" component={FeaturePage}/>
-      <Route path="/post/create" component={PostForm}/>
-      <Route path="/post/:id" component={PostForm}/>
       <Route path="" component={NotFoundPage}/>
     </Switch>
     <Footer/>
