@@ -4,10 +4,11 @@ import ListItem from 'components/ListItem';
 import { IssueIcon } from 'components/Icons';
 import './style.scss';
 import { Link } from 'react-router-dom';
+import PostLike from "../PostLike/PostLike";
 
 export default class PostListItem extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   render() {
-    const { item } = this.props;
+    const { item, isLoggedIn } = this.props;
     const content = (
       <div className="collection-item row">
         <div className="col m9">
@@ -16,8 +17,10 @@ export default class PostListItem extends React.PureComponent { // eslint-disabl
               {item.title}
             </Link>
           </h2>
-          <p className="post-sub-info">{item.source}
+          <p className="post-sub-info">
+            {item.source}
           </p>
+          <PostLike likeCount={item.likes} isLoggedIn={isLoggedIn} hasLiked={item.has_liked} postSlug={item.slug} />
         </div>
       </div>
     );
@@ -29,5 +32,6 @@ export default class PostListItem extends React.PureComponent { // eslint-disabl
 }
 
 PostListItem.propTypes = {
+  isLoggedIn: PropTypes.bool,
   item: PropTypes.object,
 };
