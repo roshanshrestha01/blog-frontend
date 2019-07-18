@@ -7,19 +7,21 @@ import LoadingIndicator from 'components/LoadingIndicator';
 import PostListItem from 'containers/PostListItem';
 // import MyEventListItem from 'containers/MyEventListItem';
 
-const PostList = ({ loading, error, posts, userPosts}) => {
+const PostList = ({
+  loading, error, posts, userPosts
+}) => {
   if (loading) {
-    return <List component={LoadingIndicator}/>;
+    return <List component={LoadingIndicator} />;
   }
   if (error !== false) {
     const ErrorComponent = () => (
-      <ListItem item={'Something went wrong, please try again!'}/>
+      <ListItem item={'Something went wrong, please try again!'} />
     );
-    return <List component={ErrorComponent}/>;
+    return <List component={ErrorComponent} />;
   }
 
   if (posts === undefined) {
-    return <List component={LoadingIndicator}/>;
+    return <List component={LoadingIndicator} />;
   }
 
   // if (userPosts === true) {
@@ -28,7 +30,7 @@ const PostList = ({ loading, error, posts, userPosts}) => {
 
   if (posts !== false) {
     // const { results } = posts;
-    return <List items={posts} component={PostListItem}/>;
+    return <List items={posts} component={PostListItem} />;
   }
 
   return null;

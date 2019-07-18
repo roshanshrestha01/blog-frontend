@@ -1,13 +1,15 @@
-import {call, put, select, takeLatest} from 'redux-saga/effects';
-import {LOAD_REPOS} from 'containers/App/constants';
-import {repoLoadingError, reposLoaded} from 'containers/App/actions';
+import {
+  call, put, select, takeLatest
+} from 'redux-saga/effects';
+import { LOAD_REPOS } from 'containers/App/constants';
+import { repoLoadingError, reposLoaded } from 'containers/App/actions';
 
 import request from 'utils/request';
-import {makeSelectUsername} from 'containers/HomePage/selectors';
-import {LOAD_POSTS} from './constants';
+import { makeSelectUsername, makeSelectRouteQuery } from 'containers/HomePage/selectors';
+import { LOAD_POSTS } from './constants';
 import config from '../../config';
-import {loadPostsError, loadPostsSuccess} from "./actions";
-import {makeSelectRouteQuery} from "./selectors";
+import { loadPostsError, loadPostsSuccess } from './actions';
+
 
 export function* getRepos() {
   // Select username from store

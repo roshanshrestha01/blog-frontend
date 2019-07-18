@@ -1,16 +1,18 @@
-import {call, put, takeLatest,} from 'redux-saga/effects';
+import { call, put, takeLatest } from 'redux-saga/effects';
 import request from 'utils/request';
-import {push} from 'connected-react-router';
+import { push } from 'connected-react-router';
 
-import {REQUEST_FAILED, SIGN_IN, SIGN_UP, SUCCESS_SIGN_OUT} from './constants';
-import {endSignUp, successSignIn} from './actions';
+import { NotificationManager } from 'react-notifications';
+import {
+  REQUEST_FAILED, SIGN_IN, SIGN_UP, SUCCESS_SIGN_OUT
+} from './constants';
+import { endSignUp, successSignIn } from './actions';
 import config from '../../config';
-import {NotificationManager} from 'react-notifications';
 
 
 export function* userSignIn(action) {
   const requestURL = `${config.baseURL}/sessions/`;
-  const {data} = action;
+  const { data } = action;
   try {
     const response = yield call(request, requestURL, {
       method: 'POST',
@@ -27,15 +29,15 @@ export function* userSignIn(action) {
     try {
       error = yield err.response.json();
     } catch (e) {
-      error = {errors: [{detail: `${err.name}: ${err.message}`}]};
+      error = { errors: [{ detail: `${err.name}: ${err.message}` }] };
     }
-    yield put({type: REQUEST_FAILED, error})
+    yield put({ type: REQUEST_FAILED, error });
   }
 }
 
 export function* userSignUp(action) {
   const requestURL = `${config.baseURL}/users/`;
-  const {data} = action;
+  const { data } = action;
   try {
     const response = yield call(request, requestURL, {
       method: 'POST',
@@ -53,9 +55,9 @@ export function* userSignUp(action) {
     try {
       error = yield err.response.json();
     } catch (e) {
-      error = {errors: [{detail: `${err.name}: ${err.message}`}]};
+      error = { errors: [{ detail: `${err.name}: ${err.message}` }] };
     }
-    yield put({type: REQUEST_FAILED, error})
+    yield put({ type: REQUEST_FAILED, error });
     yield put(endSignUp());
   }
 }

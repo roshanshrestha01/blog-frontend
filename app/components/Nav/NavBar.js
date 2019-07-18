@@ -17,7 +17,7 @@ const NavBar = (props) => {
     const { signIn } = props;
     signIn(JSON.parse(user));
   }
-  const links = isLoggedIn ? <SignInLinks/> : <SignOutLinks/>;
+  const links = isLoggedIn ? <SignInLinks /> : <SignOutLinks />;
   return (
     <div className="nav-bar">
       <Link className="router-link" to="/">
@@ -37,13 +37,11 @@ const mapStateToProps = createStructuredSelector({
   isLoggedIn: makeSelectUserLoggedIn(),
 });
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    signIn: (cred) => {
-      dispatch(successSignIn(cred));
-    },
-  };
-};
+const mapDispatchToProps = (dispatch) => ({
+  signIn: (cred) => {
+    dispatch(successSignIn(cred));
+  },
+});
 
 
 const withConnect = connect(mapStateToProps, mapDispatchToProps);

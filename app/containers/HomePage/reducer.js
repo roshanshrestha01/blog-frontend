@@ -1,4 +1,4 @@
-  import {CHANGE_USERNAME, LOAD_POSTS_SUCCESS} from './constants';
+import { CHANGE_USERNAME, LOAD_POSTS_SUCCESS } from './constants';
 
 // The initial state of the App
 const initialState = {

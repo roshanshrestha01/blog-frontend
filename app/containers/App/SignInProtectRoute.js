@@ -9,12 +9,14 @@ const SignInProtectRoute = ({ component: Component, ...rest }) => (
     {...rest}
     render={(props) => {
       const user = localStorage.getItem('user');
-      const component = user ? <Component {...props} /> : <Redirect
-        to={{
-          pathname: '/auth/sign-in',
-          state: { from: props.location },
-        }}
-      />;
+      const component = user ? <Component {...props} /> : (
+        <Redirect
+          to={{
+            pathname: '/auth/sign-in',
+            state: { from: props.location },
+          }}
+        />
+      );
       return (
         component
       );

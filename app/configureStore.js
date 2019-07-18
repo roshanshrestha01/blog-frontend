@@ -7,6 +7,7 @@ import { routerMiddleware } from 'connected-react-router';
 import createSagaMiddleware from 'redux-saga';
 import createReducer from './reducers';
 import authSaga from './containers/Auth/saga';
+
 const sagaMiddleware = createSagaMiddleware();
 
 export default function configureStore(initialState = {}, history) {
@@ -31,7 +32,7 @@ export default function configureStore(initialState = {}, history) {
   const store = createStore(createReducer(), initialState, composeEnhancers(...enhancers));
 
   // Extensions
-  sagaMiddleware.run(authSaga)
+  sagaMiddleware.run(authSaga);
   store.runSaga = sagaMiddleware.run;
   store.injectedReducers = {}; // Reducer registry
   store.injectedSagas = {}; // Saga registry

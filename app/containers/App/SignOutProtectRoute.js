@@ -9,12 +9,14 @@ const SignOutProtectRoute = ({ component: Component, ...rest }) => (
     {...rest}
     render={(props) => {
       const user = localStorage.getItem('user');
-      const component = user ? <Redirect
-        to={{
-          pathname: '/',
-          state: { from: props.location },
-        }}
-      /> : <Component {...props} />;
+      const component = user ? (
+        <Redirect
+          to={{
+            pathname: '/',
+            state: { from: props.location },
+          }}
+        />
+      ) : <Component {...props} />;
       return (
         component
       );

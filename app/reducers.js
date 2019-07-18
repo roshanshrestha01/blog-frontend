@@ -1,7 +1,7 @@
-import {fromJS} from 'immutable';
+import { fromJS } from 'immutable';
 
-import {combineReducers} from 'redux';
-import {connectRouter, LOCATION_CHANGE} from 'connected-react-router';
+import { combineReducers } from 'redux';
+import { connectRouter, LOCATION_CHANGE } from 'connected-react-router';
 
 import history from 'utils/history';
 import globalReducer from 'containers/App/reducer';

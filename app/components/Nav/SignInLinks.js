@@ -23,13 +23,11 @@ SignInLinks.propTypes = {
   signOut: PropTypes.func,
 };
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    signOut: () => {
-      dispatch(successSignOut());
-    },
-  };
-};
+const mapDispatchToProps = (dispatch) => ({
+  signOut: () => {
+    dispatch(successSignOut());
+  },
+});
 
 const withConnect = connect(null, mapDispatchToProps);
 

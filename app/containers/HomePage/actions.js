@@ -1,4 +1,6 @@
-import {CHANGE_SEARCH_PARAM, CHANGE_USERNAME, LOAD_POSTS, LOAD_POSTS_ERROR, LOAD_POSTS_SUCCESS} from './constants';
+import {
+  CHANGE_SEARCH_PARAM, CHANGE_USERNAME, LOAD_POSTS, LOAD_POSTS_ERROR, LOAD_POSTS_SUCCESS
+} from './constants';
 
 export function changeUsername(name) {
   return {
@@ -34,4 +36,3 @@ export function changeSearchParam(query) {
     query,
   };
 }
-

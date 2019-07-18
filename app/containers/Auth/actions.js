@@ -1,4 +1,6 @@
-import { END_SIGN_UP, SIGN_IN, SIGN_UP, SUCCESS_SIGN_IN, SUCCESS_SIGN_OUT } from './constants';
+import {
+  END_SIGN_UP, SIGN_IN, SIGN_UP, SUCCESS_SIGN_IN, SUCCESS_SIGN_OUT
+} from './constants';
 
 export function signIn(data) {
   return {
@@ -6,7 +8,6 @@ export function signIn(data) {
     data,
   };
 }
-
 
 export function successSignIn(payload) {
   return {

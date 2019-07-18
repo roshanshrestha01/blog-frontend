@@ -7,11 +7,10 @@
  */
 
 import React from 'react';
-import {Helmet} from 'react-helmet';
-import {Route, Switch} from 'react-router-dom';
+import { Helmet } from 'react-helmet';
+import { Route, Switch } from 'react-router-dom';
 
 import HomePage from 'containers/HomePage/Loadable';
-import FeaturePage from 'containers/FeaturePage/Loadable';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
 import Header from 'components/Header';
 import Footer from 'components/Footer';
@@ -19,9 +18,9 @@ import './style.scss';
 import SignIn from 'containers/Auth/SignIn';
 import SignUp from 'containers/Auth/SignUp';
 import { NotificationContainer } from 'react-notifications';
-import PostForm from "../Post/PostForm";
-import SignOutProtectRoute from "./SignOutProtectRoute";
-import SignInProtectRoute from "./SignInProtectRoute";
+import PostForm from '../Post/PostForm';
+import SignOutProtectRoute from './SignOutProtectRoute';
+import SignInProtectRoute from './SignInProtectRoute';
 
 const App = () => (
   <div className="app-wrapper">
@@ -29,20 +28,19 @@ const App = () => (
       titleTemplate="Share post"
       defaultTitle="Share post"
     >
-      <meta name="description" content="Simple Blog sharing protal"/>
+      <meta name="description" content="Simple Blog sharing protal" />
     </Helmet>
-    <Header/>
+    <Header />
     <Switch>
-      <Route exact path="/" component={HomePage}/>
-      <SignOutProtectRoute path="/auth/sign-in" component={SignIn}/>
-      <SignOutProtectRoute path="/auth/sign-up" component={SignUp}/>
-      <SignInProtectRoute path="/post/create" component={PostForm}/>
-      <SignInProtectRoute path="/post/:id" component={PostForm}/>
-      <Route path="/features" component={FeaturePage}/>
-      <Route path="" component={NotFoundPage}/>
+      <Route exact path="/" component={HomePage} />
+      <SignOutProtectRoute path="/auth/sign-in" component={SignIn} />
+      <SignOutProtectRoute path="/auth/sign-up" component={SignUp} />
+      <SignInProtectRoute path="/post/create" component={PostForm} />
+      <SignInProtectRoute path="/post/:id" component={PostForm} />
+      <Route path="" component={NotFoundPage} />
     </Switch>
-    <Footer/>
-    <NotificationContainer/>
+    <Footer />
+    <NotificationContainer />
   </div>
 );
 

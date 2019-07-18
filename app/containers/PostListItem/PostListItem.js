@@ -1,13 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ListItem from 'components/ListItem';
-import {IssueIcon} from 'components/Icons';
+import { IssueIcon } from 'components/Icons';
 import './style.scss';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 export default class PostListItem extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   render() {
-    const {item} = this.props;
+    const { item } = this.props;
     const content = (
       <div className="collection-item row">
         <div className="col m9">
@@ -23,7 +23,7 @@ export default class PostListItem extends React.PureComponent { // eslint-disabl
     );
 
     return (
-      <ListItem class="collection-item" key={`repo-list-item-${item.id}`} item={content}/>
+      <ListItem class="collection-item" key={`repo-list-item-${item.id}`} item={content} />
     );
   }
 }

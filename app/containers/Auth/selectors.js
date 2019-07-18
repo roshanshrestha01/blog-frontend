@@ -26,16 +26,14 @@ const makeSelectGoingEvents = () => createSelector(
 const makeSelectUserLoggedIn = () => createSelector(
   selectAuth,
   (authState) => {
-    authState = authState.toJS()
+    authState = authState.toJS();
     return authState.user.isLoggedIn;
   },
 );
 
 const makeSelectAuthLoading = () => createSelector(
   selectAuth,
-  (authState) => {
-    return authState.authLoading;
-  },
+  (authState) => authState.authLoading,
 );
 
 
