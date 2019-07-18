@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import LoadingIndicator from '../../../components/LoadingIndicator';
 import PropTypes from 'prop-types';
-import {NotificationManager} from 'react-notifications';
+import { Link } from 'react-router-dom';
 
 export default class SignIn extends Component {
   state = {
@@ -36,6 +36,9 @@ export default class SignIn extends Component {
             {button}
           </div>
         </form>
+        <p>
+        Don't have account? <Link to='/auth/sign-up/'>Sign up</Link>
+        </p>
       </div>
     );
   }

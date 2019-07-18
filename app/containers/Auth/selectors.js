@@ -26,14 +26,8 @@ const makeSelectGoingEvents = () => createSelector(
 const makeSelectUserLoggedIn = () => createSelector(
   selectAuth,
   (authState) => {
-    if (authState) {
-      try {
-        return authState.user
-          .get('isLoggedIn');
-      } catch {
-        return authState.user.isLoggedIn;
-      }
-    }
+    authState = authState.toJS()
+    return authState.user.isLoggedIn;
   },
 );
 

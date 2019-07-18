@@ -28,7 +28,7 @@ function authReducer(state = initialState, action) {
       return state
         .set('user', {
           email: null,
-          token: null,
+          auth_token: null,
           isLoggedIn: false,
         });
     case REQUEST_FAILED:
