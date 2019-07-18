@@ -1,28 +1,12 @@
 import {
   call, put, select, takeLatest
 } from 'redux-saga/effects';
-import { LOAD_REPOS } from 'containers/App/constants';
-import { repoLoadingError, reposLoaded } from 'containers/App/actions';
 
 import request from 'utils/request';
-import { makeSelectUsername, makeSelectRouteQuery } from 'containers/HomePage/selectors';
+import { makeSelectRouteQuery } from 'containers/HomePage/selectors';
 import { LOAD_POSTS } from './constants';
 import config from '../../config';
 import { loadPostsError, loadPostsSuccess } from './actions';
-
-
-export function* getRepos() {
-  // Select username from store
-  const username = yield select(makeSelectUsername());
-  const requestURL = `https://api.github.com/users/${username}/repos?type=all&sort=updated`;
-
-  try {
-    const repos = yield call(request, requestURL);
-    yield put(reposLoaded(repos, username));
-  } catch (err) {
-    yield put(repoLoadingError(err));
-  }
-}
 
 export function* getPosts() {
   let requestURL = `${config.baseURL}/posts/`;
@@ -31,8 +15,8 @@ export function* getPosts() {
     requestURL = `${config.baseURL}/posts/${search}`;
   }
   try {
-    const posts = yield call(request, requestURL);
-    yield put(loadPostsSuccess(posts));
+    const response = yield call(request, requestURL);
+    yield put(loadPostsSuccess(response));
   } catch (err) {
     yield put(loadPostsError(err));
   }

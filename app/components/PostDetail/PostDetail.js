@@ -15,7 +15,6 @@ class PostDetail extends React.Component { // eslint-disable-line react/prefer-s
 
   async componentDidMount() {
     const { match: { params: { slug } }, isLoggedIn } = this.props;
-    console.log(isLoggedIn);
     const requestURL = `${config.baseURL}/posts/${slug}/`;
     await request(requestURL)
       .then((data) => {

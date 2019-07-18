@@ -6,12 +6,12 @@ const selectRoute = (state) => state.route;
 
 const makeSelectQuery = () => createSelector(
   selectHome,
-  (homeState) => homeState.get('search'),
+  (homeState) => homeState.search
 );
 
 const makeSelectRouteQuery = () => createSelector(
   selectRoute,
-  (routeState) => routeState.get('location').get('search'),
+  (routeState) => routeState.get('location').get('location').get('search'),
 );
 
 const makePosts = () => createSelector(

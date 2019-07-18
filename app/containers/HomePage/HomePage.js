@@ -16,18 +16,30 @@ export default class HomePage extends React.PureComponent { // eslint-disable-li
   /**
    * when initial state username is not null, submit the form to load repos
    */
-  componentDidMount() {
-    const { username, onSubmitForm, fetchPosts } = this.props;
-    fetchPosts();
-    if (username && username.trim().length > 0) {
-      onSubmitForm();
-    }
+  constructor() {
+    super();
+    this.state = {};
   }
+
+  componentDidMount() {
+    const { fetchPosts } = this.props;
+    fetchPosts();
+  }
+
+  handleChange = (e) => {
+    this.setState({
+      [e.target.id]: e.target.value,
+    });
+  };
 
   render() {
     const {
-      loading, error, username, onChangeUsername, onSubmitForm, posts
+      loading, error, onSubmitForm, posts, query
     } = this.props;
+
+    const {
+      search
+    } = this.state;
 
     const postsListProps = {
       loading,
@@ -43,18 +55,15 @@ export default class HomePage extends React.PureComponent { // eslint-disable-li
         </Helmet>
         <div className="home-page">
           <section>
-            <form onSubmit={onSubmitForm}>
-              <label htmlFor="username">
-                Show Github repositories by
-                <span className="at-prefix">@</span>
-                <input
-                  id="username"
-                  type="text"
-                  placeholder="flexdinesh"
-                  value={username}
-                  onChange={onChangeUsername}
-                />
-              </label>
+            <form onSubmit={(e) => onSubmitForm(this, e, search)}>
+              <input
+                className="form-control form-control-lg"
+                id="search"
+                type="text"
+                placeholder="Search posts @ with their title."
+                value={query}
+                onChange={this.handleChange}
+              />
             </form>
             <PostsList {...postsListProps} />
           </section>
@@ -71,6 +80,5 @@ HomePage.propTypes = {
   posts: PropTypes.oneOfType([PropTypes.array, PropTypes.bool]),
   onSubmitForm: PropTypes.func,
   fetchPosts: PropTypes.func,
-  username: PropTypes.string,
-  onChangeUsername: PropTypes.func
+  query: PropTypes.string,
 };

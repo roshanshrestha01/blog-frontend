@@ -4,9 +4,8 @@ import { createStructuredSelector } from 'reselect';
 import injectReducer from 'utils/injectReducer';
 import injectSaga from 'utils/injectSaga';
 import { makeSelectError, makeSelectLoading, makeSelectRepos } from 'containers/App/selectors';
-import { loadRepos } from '../App/actions';
 import { changeUsername, loadPosts } from './actions';
-import { makePosts, makeSelectUsername } from './selectors';
+import { makePosts, makeSelectQuery, makeSelectUsername } from './selectors';
 import reducer from './reducer';
 import saga from './saga';
 import HomePage from './HomePage';
@@ -15,9 +14,12 @@ import HomePage from './HomePage';
 const mapDispatchToProps = (dispatch) => ({
   onChangeUsername: (evt) => dispatch(changeUsername(evt.target.value)),
   fetchPosts: () => dispatch(loadPosts()),
-  onSubmitForm: (evt) => {
+  onSubmitForm: (scope, evt, query) => {
     if (evt !== undefined && evt.preventDefault) evt.preventDefault();
-    dispatch(loadRepos());
+    scope.props.history.push({
+      search: `?search=${query}`,
+    });
+    dispatch(loadPosts());
   }
 });
 
@@ -25,6 +27,7 @@ const mapStateToProps = createStructuredSelector({
   repos: makeSelectRepos(),
   posts: makePosts(),
   username: makeSelectUsername(),
+  query: makeSelectQuery(),
   loading: makeSelectLoading(),
   error: makeSelectError()
 });
