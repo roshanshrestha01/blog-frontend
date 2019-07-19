@@ -6,6 +6,7 @@ import request from 'utils/request';
 import config from '../../config';
 import LoadingIndicator from '../LoadingIndicator';
 import Comment from './_partials/Comment';
+import PostLike from '../../containers/PostLike/PostLike';
 
 
 class PostDetail extends React.Component { // eslint-disable-line react/prefer-stateless-function
@@ -34,6 +35,8 @@ class PostDetail extends React.Component { // eslint-disable-line react/prefer-s
       title,
       link,
       source,
+      likes,
+      has_liked,
       slug,
       comment
     } = this.state;
@@ -43,6 +46,7 @@ class PostDetail extends React.Component { // eslint-disable-line react/prefer-s
           <h1>{title}</h1>
           <p className="post-sub-info">{source}</p>
           <p className="flow-text">{link}</p>
+          <PostLike likeCount={likes} isLoggedIn={isLoggedIn} hasLiked={has_liked} postSlug={slug} />
         </div>
         <Comment isLoggedIn={isLoggedIn} comments={comment} postSlug={slug} />
       </div>
