@@ -1,11 +1,13 @@
-import {call, put, select, takeLatest} from 'redux-saga/effects';
+import {
+  call, put, select, takeLatest
+} from 'redux-saga/effects';
 
 import request from 'utils/request';
-import {makeSelectRouteQuery} from 'containers/HomePage/selectors';
-import {LOAD_POSTS} from './constants';
+import { makeSelectRouteQuery } from 'containers/HomePage/selectors';
+import { LOAD_POSTS } from './constants';
 import config from '../../config';
-import {loadPostsError, loadPostsSuccess} from './actions';
-import {makeSelectUserLoggedIn} from "../Auth/selectors";
+import { loadPostsError, loadPostsSuccess } from './actions';
+import { makeSelectUserLoggedIn } from '../Auth/selectors';
 
 export function* getPosts() {
   let requestURL = `${config.baseURL}/posts/`;
@@ -14,12 +16,12 @@ export function* getPosts() {
     requestURL = `${config.baseURL}/posts/${search}`;
   }
   try {
-    let headerParams = {}
+    let headerParams = {};
     const isLoggedIn = yield select(makeSelectUserLoggedIn());
     if (isLoggedIn) {
       const user = localStorage.getItem('user');
       const parseUser = JSON.parse(user);
-      const {auth_token} = parseUser;
+      const { auth_token } = parseUser;
       headerParams = {
         Accept: 'application/json',
         Authorization: `Token ${auth_token}`,
@@ -29,7 +31,7 @@ export function* getPosts() {
     const response = yield call(
       request,
       requestURL,
-      {headers: headerParams}
+      { headers: headerParams }
     );
     yield put(loadPostsSuccess(response));
   } catch (err) {

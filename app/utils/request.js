@@ -44,3 +44,7 @@ export default function request(url, options) {
     .then(checkStatus)
     .then(parseJSON);
 }
+
+export function simpleRequest(url, options) {
+  return fetch(url, options);
+}

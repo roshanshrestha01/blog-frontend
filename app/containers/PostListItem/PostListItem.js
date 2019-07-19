@@ -4,7 +4,7 @@ import ListItem from 'components/ListItem';
 import { IssueIcon } from 'components/Icons';
 import './style.scss';
 import { Link } from 'react-router-dom';
-import PostLike from "../PostLike/PostLike";
+import PostLike from '../PostLike/PostLike';
 
 export default class PostListItem extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   render() {

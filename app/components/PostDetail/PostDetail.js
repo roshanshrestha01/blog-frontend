@@ -25,10 +25,10 @@ class PostDetail extends React.Component { // eslint-disable-line react/prefer-s
   }
 
   checkAndRender() {
-    return Object.keys(this.state).length > 0 ? this.renderEventDetail() : <LoadingIndicator />;
+    return Object.keys(this.state).length > 0 ? this.renderPostDetail() : <LoadingIndicator />;
   }
 
-  renderEventDetail() {
+  renderPostDetail() {
     const { isLoggedIn } = this.props;
     const {
       title,
