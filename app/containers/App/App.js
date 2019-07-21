@@ -8,7 +8,7 @@
 
 import React from 'react';
 import { Helmet } from 'react-helmet';
-import { Route, Switch } from 'react-router-dom';
+import { Redirect, Route, Switch } from 'react-router-dom';
 
 import HomePage from 'containers/HomePage/Loadable';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
@@ -33,7 +33,8 @@ const App = () => (
     </Helmet>
     <Header />
     <Switch>
-      <Route exact path="/" component={HomePage} />
+      <Route exact path="/" render={() => (<Redirect to="/feed/" />)} />
+      <Route path="/feed/" component={HomePage} />
       <Route path="/post/detail/:slug" component={PostDetail} />
       <SignOutProtectRoute path="/auth/sign-in" component={SignIn} />
       <SignOutProtectRoute path="/auth/sign-up" component={SignUp} />
