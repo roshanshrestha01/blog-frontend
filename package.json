@@ -60,6 +60,8 @@
     "webpack-hot-middleware": "2.24.3",
     "add-asset-html-webpack-plugin": "3.0.1",
     "html-webpack-plugin": "3.2.0",
+    "file-loader": "4.0.0",
+    "html-loader": "0.5.5",
     "whatwg-fetch": "3.0.0",
     "circular-dependency-plugin": "5.0.2"
   },
@@ -95,9 +97,6 @@
     "eslint-plugin-redux-saga": "1.0.0",
     "eventsource-polyfill": "0.9.6",
     "exports-loader": "0.7.0",
-    "file-loader": "4.0.0",
-    "html-loader": "0.5.5",
-    "html-webpack-plugin": "3.2.0",
     "imports-loader": "0.8.0",
     "jest-cli": "24.8.0",
     "lint-staged": "8.2.1",
