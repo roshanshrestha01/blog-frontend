@@ -34,6 +34,7 @@ const App = () => (
     <Header />
     <Switch>
       <Route exact path="/" render={() => (<Redirect to="/feed/" />)} />
+      <Route exact path="/article-frontend/" render={() => (<Redirect to="/feed/" />)} />
       <Route path="/feed/" component={HomePage} />
       <Route path="/post/detail/:slug" component={PostDetail} />
       <SignOutProtectRoute path="/auth/sign-in" component={SignIn} />
