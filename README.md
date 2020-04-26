@@ -1,6 +1,11 @@
 ### Article front end
 Simple react application to consume api to hold post application
+Demo show production ready react app with
+* react saga
+* react-reducer
+* reselect
 
+For proper container separarions
 ## Quick start
 
 1. Clone this repo using `git@github.com:roshanshrestha01/article-frontend.git app`
